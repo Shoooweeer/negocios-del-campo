@@ -1,15 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NDC Agri - Soluciones para el Agro Paraguayo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-      <section class="hero" id="inicio">
-        <div class="hero-media"></div>
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-          <div class="hero-badges" aria-label="Indicadores de la empresa">
-            <span>Agro</span>
-            <span>Comercio</span>
-            <span>Paraguay</span>
-          </div>
-          <p class="eyebrow eyebrow-light">SOLUCIONES PARA EL AGRO PARAGUAYO</p>
-          <h1>Creemos en el campo,<br />y en su futuro.</h1>
-          <p class="hero-copy">
-            Negocios del Campo conecta producción, comercio y oportunidades para fortalecer el crecimiento del sector agropecuario en Paraguay.
-          </p>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0d2c20;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .poster {
+            width: 100%;
+            max-width: 1200px;
+            aspect-ratio: 16 / 9;
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+            background:
+                linear-gradient(90deg, rgba(9,35,25,0.96) 0%, rgba(13,53,35,0.88) 45%, rgba(20,70,45,0.35) 100%),
+                url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1800&q=80') center center / cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 55px 70px;
+            color: #fff;
+        }
+
+        .poster::after {
+            content: '';
+            position: absolute;
+            right: -80px;
+            top: -80px;
+            width: 420px;
+            height: 420px;
+            border: 1px solid rgba(219,232,94,0.25);
+            border-radius: 50%;
+            box-shadow: 0 0 0 35px rgba(219,232,94,0.05), 0 0 0 75px rgba(219,232,94,0.035);
+            pointer-events: none;
+        }
+
+        .top {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-mark {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #dbe85e, #f3f3a0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #123b2b;
+            font-weight: 900;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            box-shadow: 0 0 0 6px rgba(219,232,94,0.15);
+        }
+
+        .brand-text strong {
+            display: block;
+            font-size: 1.25rem;
+            letter-spacing: 3px;
+        }
+
+        .brand-text span {
+            display: block;
+            font-size: 0.65rem;
+            letter-spacing: 3.5px;
+            color: rgba(255,255,255,0.65);
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
+
+        .badges { display: flex; gap: 10px; }
+
+        .badges span {
+            padding: 8px 16px;
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 999px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: rgba(255,255,255,0.06);
+        }
+
+        .middle {
+            position: relative;
+            z-index: 2;
+            max-width: 780px;
+        }
+
+        .eyebrow {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            color: #dbe85e;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 6vw, 5.4rem);
+            line-height: 0.98;
+            letter-spacing: -3px;
+            margin-bottom: 20px;
+        }
+
+        h1 em {
+            font-style: normal;
+            color: #dbe85e;
+        }
+
+        .desc {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.82);
+            max-width: 620px;
+        }
+
+        .bottom {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .stats { display: flex; gap: 46px; }
+
+        .stat strong {
+            display: block;
+            font-size: 2rem;
+            color: #dbe85e;
+            letter-spacing: -1px;
+        }
+
+        .stat span {
+            font-size: 0.7rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .site {
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            color: rgba(255,255,255,0.55);
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 700px) {
+            .poster { padding: 30px 26px; aspect-ratio: 3 / 4; }
+            .badges { display: none; }
+            h1 { letter-spacing: -1px; }
+            .stats { gap: 20px; flex-wrap: wrap; }
+            .site { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="poster">
+        <div class="top">
+            <div class="brand">
+                <div class="brand-mark">NDC</div>
+                <div class="brand-text">
+                    <strong>NDC AGRI</strong>
+                    <span>Agro · Paraguay</span>
+                </div>
+            </div>
+            <div class="badges">
+                <span>Agro</span>
+                <span>Comercio</span>
+                <span>Paraguay</span>
+            </div>
+        </div>
+
+        <div class="middle">
+            <p class="eyebrow">Soluciones para el agro paraguayo</p>
+            <h1>Creemos en el campo,<br><em>y en su futuro.</em></h1>
+            <p class="desc">Conectamos producción, comercio y oportunidades para fortalecer el crecimiento del sector agropecuario en Paraguay.</p>
+        </div>
+
+        <div class="bottom">
+            <div class="stats">
+                <div class="stat">
+                    <strong>15+</strong>
+                    <span>Años de experiencia</span>
+                </div>
+                <div class="stat">
+                    <strong>200+</strong>
+                    <span>Clientes</span>
+                </div>
+                <div class="stat">
+                    <strong>10K+</strong>
+                    <span>Hectáreas</span>
+                </div>
+            </div>
+            <div class="site">ndcagri.com</div>
+        </div>
+    </div>
+
+</body>
+</html>
