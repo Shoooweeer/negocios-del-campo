@@ -3,388 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="content-language" content="es">
-    <title>NDC Agri — Del campo paraguayo al mundo</title>
-    <meta name="description" content="NDC Agri: comercialización y exportación de productos agropecuarios paraguayos. Soja, maíz, trigo, carne, arroz y sésamo.">
+    <title>NDC Agri — Pronto volvemos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --green-900: #0c2418;
-            --green-800: #123b28;
-            --green-700: #1a4a33;
-            --green-600: #2c6b49;
-            --gold: #c9a94e;
-            --cream: #f5f3ec;
-            --white: #ffffff;
-            --ink: #16201a;
-            --muted: #3d4c43;
-            --line: #dfe4dc;
-        }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color: var(--ink);
-            background: var(--white);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
+            font-family: 'Inter', -apple-system, sans-serif;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: #0c2418;
+            color: #fff;
         }
 
-        img { max-width: 100%; display: block; }
-        a { text-decoration: none; color: inherit; }
-
-        .container { width: min(1180px, calc(100% - 56px)); margin: 0 auto; }
-
-        .eyebrow {
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--green-600);
-            margin-bottom: 20px;
-        }
-        .eyebrow-light { color: var(--gold); }
-
-        h1, h2, h3, h4 { font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: -0.035em; line-height: 1.1; }
-        h2 { font-size: clamp(2.2rem, 4vw, 3.4rem); color: var(--ink); }
-        h2.light { color: var(--white); }
-
-        p { font-size: 1.15rem; color: var(--muted); line-height: 1.8; }
-
-        .section { padding: 120px 0; }
-
-        /* Header */
-        header {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-            background: rgba(12,36,24,0.95);
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-        .header-inner { height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
-        .brand { display: flex; align-items: center; gap: 13px; color: var(--white); }
-        .brand-mark {
-            width: 44px; height: 44px; border: 1px solid var(--gold); border-radius: 10px;
-            display: grid; place-items: center; color: var(--gold);
-            font-weight: 800; font-size: 0.95rem; letter-spacing: 1px;
-        }
-        .brand-text strong { display: block; font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; }
-        .brand-text span { display: block; font-size: 0.62rem; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 2px; }
-        .nav { display: flex; align-items: center; gap: 36px; }
-        .nav a { color: rgba(255,255,255,0.82); font-size: 0.9rem; font-weight: 500; transition: color .2s; }
-        .nav a:hover { color: var(--gold); }
-        .lang { border: 1px solid rgba(255,255,255,0.25); border-radius: 5px; padding: 6px 12px; font-size: 0.78rem; color: var(--white); }
-
-        /* Hero */
-        .hero {
-            position: relative; min-height: 100vh; display: flex; align-items: center;
+        /* Left - photo */
+        .visual {
+            position: relative;
             background:
-                linear-gradient(90deg, rgba(12,36,24,0.96) 0%, rgba(18,59,40,0.88) 45%, rgba(26,74,51,0.45) 100%),
-                url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=2000&q=85') center / cover no-repeat;
-            color: var(--white); padding: 130px 0 90px; overflow: hidden;
+                linear-gradient(160deg, rgba(12,36,24,0.35), rgba(12,36,24,0.85)),
+                url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1400&q=85') center / cover no-repeat;
         }
-        .hero-content { position: relative; z-index: 2; max-width: 820px; }
-        .hero h1 { font-size: clamp(3rem, 6.5vw, 5.4rem); color: var(--white); margin-bottom: 26px; }
-        .hero h1 em { font-style: normal; color: var(--gold); }
-        .hero-sub { font-size: 1.25rem; color: rgba(255,255,255,0.86); max-width: 600px; margin-bottom: 38px; }
-        .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center; min-height: 52px;
-            padding: 0 28px; border-radius: 6px; font-size: 0.88rem; font-weight: 700;
-            letter-spacing: 0.04em; transition: transform .2s, background .2s;
-        }
-        .btn:hover { transform: translateY(-2px); }
-        .btn-gold { background: var(--gold); color: var(--green-900); }
-        .btn-ghost { border: 1px solid rgba(255,255,255,0.4); color: var(--white); }
-        .btn-ghost:hover { background: rgba(255,255,255,0.1); }
 
-        /* About */
-        .about { background: var(--white); }
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-        .about-image {
-            height: 540px; border-radius: 8px;
-            background: url('https://images.unsplash.com/photo-1620200423727-8127f75d7f53?auto=format&fit=crop&w=1200&q=80') center / cover no-repeat;
+        .brand {
+            position: absolute;
+            top: 40px;
+            left: 48px;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            z-index: 2;
+        }
+
+        .brand-mark {
+            width: 48px; height: 48px;
+            border: 1px solid #c9a94e;
+            border-radius: 10px;
+            display: grid; place-items: center;
+            color: #c9a94e;
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .brand-text strong { display: block; font-size: 1.25rem; font-weight: 800; letter-spacing: 2px; }
+        .brand-text span { display: block; font-size: 0.62rem; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+
+        .visual-caption {
+            position: absolute;
+            bottom: 48px;
+            left: 48px;
+            right: 48px;
+            z-index: 2;
+        }
+
+        .visual-caption p {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.7;
+            max-width: 420px;
+        }
+
+        .visual-caption span {
+            display: block;
+            margin-top: 16px;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #c9a94e;
+            font-weight: 700;
+        }
+
+        /* Right - content */
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
             position: relative;
         }
-        .about-image::before {
-            content: ''; position: absolute; inset: 20px -20px -20px 20px;
-            border: 2px solid var(--gold); border-radius: 8px; z-index: -1;
+
+        .content::after {
+            content: '';
+            position: absolute;
+            right: -100px; bottom: -100px;
+            width: 360px; height: 360px;
+            border: 1px solid rgba(201,169,78,0.18);
+            border-radius: 50%;
+            box-shadow: 0 0 0 40px rgba(201,169,78,0.04), 0 0 0 80px rgba(201,169,78,0.03);
+            pointer-events: none;
         }
-        .about h2 { margin-bottom: 22px; }
-        .about p { font-size: 1.18rem; color: var(--muted); }
-        .features { display: grid; gap: 22px; margin-top: 36px; }
-        .feature { display: flex; gap: 18px; align-items: flex-start; }
-        .feature-num { color: var(--green-600); font-weight: 800; font-size: 0.95rem; min-width: 30px; padding-top: 3px; }
-        .feature h4 { font-size: 1.05rem; color: var(--green-800); margin-bottom: 3px; }
-        .feature p { font-size: 1rem; color: var(--muted); }
 
-        /* Products */
-        .products { background: var(--cream); }
-        .section-head { display: flex; justify-content: space-between; align-items: end; gap: 50px; margin-bottom: 56px; }
-        .section-head h2 { margin-bottom: 0; }
-        .section-head .lead { font-size: 1.15rem; max-width: 440px; color: var(--muted); }
-        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
-        .product-card {
-            background: var(--white); border-radius: 8px; overflow: hidden;
-            box-shadow: 0 10px 30px rgba(18,59,40,0.06);
-            transition: transform .3s, box-shadow .3s;
+        .inner { max-width: 460px; position: relative; z-index: 2; }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(201,169,78,0.4);
+            border-radius: 999px;
+            padding: 8px 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #c9a94e;
+            margin-bottom: 32px;
         }
-        .product-card:hover { transform: translateY(-6px); box-shadow: 0 22px 44px rgba(18,59,40,0.13); }
-        .product-card .img { height: 230px; background-size: cover; background-position: center; }
-        .product-body { padding: 26px 26px 30px; }
-        .product-body span { font-size: 0.72rem; letter-spacing: 1.6px; text-transform: uppercase; color: var(--green-600); font-weight: 700; }
-        .product-body h3 { font-size: 1.5rem; color: var(--ink); margin: 8px 0 10px; }
-        .product-body p { font-size: 1rem; color: var(--muted); }
 
-        /* Export - dark */
-        .export { background: var(--green-800); }
-        .export .eyebrow { color: var(--gold); }
-        .heading-center { max-width: 720px; margin: 0 auto 64px; text-align: center; }
-        .heading-center h2 { color: var(--white); margin-bottom: 18px; }
-        .heading-center p { font-size: 1.15rem; color: rgba(255,255,255,0.78); }
-        .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
-        .step { border-top: 2px solid var(--gold); padding-top: 22px; }
-        .step-num { font-size: 1.5rem; font-weight: 800; color: var(--gold); margin-bottom: 12px; }
-        .step h4 { font-size: 1.15rem; color: var(--white); margin-bottom: 8px; }
-        .step p { font-size: 0.95rem; color: rgba(255,255,255,0.7); }
-
-        /* Markets */
-        .markets { background: var(--white); }
-        .markets-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: start; }
-        .market-region { padding: 22px 0; border-bottom: 1px solid var(--line); }
-        .market-region h4 { font-size: 1.3rem; color: var(--ink); }
-        .market-region p { font-size: 1rem; color: var(--muted); margin-top: 4px; }
-        .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
-        .chip { border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px; font-size: 0.85rem; font-weight: 500; color: var(--green-800); background: var(--cream); }
-
-        /* Quality */
-        .quality { background: var(--cream); }
-        .quality > .container > h2 { margin-bottom: 18px; }
-        .quality-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 44px; }
-        .quality-card { background: var(--white); padding: 34px; border-radius: 8px; border-left: 4px solid var(--gold); }
-        .quality-card h4 { font-size: 1.25rem; color: var(--ink); margin-bottom: 10px; }
-        .quality-card p { font-size: 1rem; color: var(--muted); }
-
-        /* CTA */
-        .cta-band { background: var(--green-900); color: var(--white); text-align: center; padding: 100px 0; }
-        .cta-band h2 { color: var(--white); margin-bottom: 14px; }
-        .cta-band p { color: rgba(255,255,255,0.7); }
-        .cta-band .site { display: inline-block; margin-top: 28px; letter-spacing: 4px; font-size: 0.85rem; font-weight: 700; color: var(--gold); text-transform: uppercase; }
-
-        /* Footer */
-        footer { background: var(--green-900); color: rgba(255,255,255,0.6); padding: 56px 0 30px; border-top: 1px solid rgba(255,255,255,0.08); }
-        .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 30px; flex-wrap: wrap; }
-        .footer-nav { display: flex; gap: 26px; flex-wrap: wrap; }
-        .footer-nav a { font-size: 0.88rem; }
-        .footer-nav a:hover { color: var(--gold); }
-        .footer-bottom { text-align: center; margin-top: 34px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.8rem; }
-
-        @media (max-width: 980px) {
-            .nav { display: none; }
-            .about-grid, .markets-grid { grid-template-columns: 1fr; }
-            .about-image { height: 380px; }
-            .product-grid { grid-template-columns: repeat(2, 1fr); }
-            .steps { grid-template-columns: repeat(2, 1fr); }
-            .section-head { flex-direction: column; align-items: flex-start; }
+        .dot {
+            width: 8px; height: 8px;
+            background: #c9a94e;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
         }
-        @media (max-width: 640px) {
-            .section { padding: 80px 0; }
-            .product-grid, .quality-grid, .steps { grid-template-columns: 1fr; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.7); }
+        }
+
+        h1 {
+            font-size: clamp(2.6rem, 4.5vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.045em;
+            line-height: 1.08;
+            margin-bottom: 22px;
+        }
+
+        h1 em { font-style: normal; color: #c9a94e; }
+
+        .desc {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin-bottom: 36px;
+        }
+
+        .progress {
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 999px;
+            overflow: hidden;
+            margin-bottom: 14px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 65%;
+            background: linear-gradient(90deg, #c9a94e, #e6cf85);
+            border-radius: 999px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 0.5px;
+        }
+
+        .site {
+            display: inline-block;
+            margin-top: 48px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #c9a94e;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 860px) {
+            body { grid-template-columns: 1fr; }
+            .visual { min-height: 280px; }
+            .visual-caption { bottom: 28px; left: 28px; right: 28px; }
+            .visual-caption p { font-size: 0.9rem; }
+            .brand { top: 24px; left: 28px; }
+            .content { padding: 50px 28px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container header-inner">
-            <a href="#inicio" class="brand">
-                <div class="brand-mark">NDC</div>
-                <div class="brand-text"><strong>NDC AGRI</strong><span>Paraguay</span></div>
-            </a>
-            <nav class="nav">
-                <a href="#inicio">Inicio</a>
-                <a href="#nosotros">Nosotros</a>
-                <a href="#productos">Productos</a>
-                <a href="#exportacion">Cómo trabajamos</a>
-                <a href="#calidad">Calidad</a>
-                <span class="lang">ES</span>
-            </nav>
+    <div class="visual">
+        <div class="brand">
+            <div class="brand-mark">NDC</div>
+            <div class="brand-text"><strong>NDC AGRI</strong><span>Paraguay</span></div>
         </div>
-    </header>
-
-    <!-- HERO -->
-    <section class="hero" id="inicio">
-        <div class="container hero-content">
-            <p class="eyebrow eyebrow-light">Del campo paraguayo al mundo</p>
-            <h1>Trabajamos la tierra,<br><em>acercamos oportunidades.</em></h1>
-            <p class="hero-sub">Compramos, preparamos y llevamos la producción del campo paraguayo a los mercados que la necesitan. Con seriedad, de principio a fin.</p>
-            <div class="hero-actions">
-                <a href="#productos" class="btn btn-gold">Ver qué hacemos</a>
-                <a href="#nosotros" class="btn btn-ghost">Sobre nosotros</a>
-            </div>
+        <div class="visual-caption">
+            <p>Del campo paraguayo al mundo, seguimos trabajando para volver mejor.</p>
+            <span>Agro · Comercio · Paraguay</span>
         </div>
-    </section>
+    </div>
 
-    <!-- ABOUT -->
-    <section class="section about" id="nosotros">
-        <div class="container about-grid">
-            <div class="about-image"></div>
-            <div>
-                <p class="eyebrow">Nuestra historia</p>
-                <h2>Nacimos del campo<br>y crecemos con él.</h2>
-                <p>Somos una empresa paraguaya que une a quienes producen con quienes compran. Estamos en la finca y en el puerto, cuidando que cada carga llegue como se prometió.</p>
-                <div class="features">
-                    <div class="feature">
-                        <div class="feature-num">01</div>
-                        <div><h4>Calidad revisada</h4><p>Controlamos cada partida antes de que salga.</p></div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-num">02</div>
-                        <div><h4>Palabra cumplida</h4><p>Llegamos a tiempo y avisamos siempre.</p></div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-num">03</div>
-                        <div><h4>Vías abiertas</h4><p>Llevamos nuestros productos a distintos continentes.</p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PRODUCTS -->
-    <section class="section products" id="productos">
-        <div class="container">
-            <div class="section-head">
-                <div>
-                    <p class="eyebrow">Lo que movemos</p>
-                    <h2>Lo que da la tierra,<br>lo llevamos más lejos.</h2>
-                </div>
-                <p class="lead">Granos, carnes y semillas del Paraguay con destino a distintos mercados.</p>
-            </div>
-
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="img" style="background-image:url('https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=800&q=80')"></div>
-                    <div class="product-body"><span>Grano</span><h3>Soja</h3><p>El grano estrella del campo paraguayo.</p></div>
-                </div>
-                <div class="product-card">
-                    <div class="img" style="background-image:url('https://images.unsplash.com/photo-1551754655-cd27e38d2076?auto=format&fit=crop&w=800&q=80')"></div>
-                    <div class="product-body"><span>Cereal</span><h3>Maíz</h3><p>Para alimento, industria y ganadería.</p></div>
-                </div>
-                <div class="product-card">
-                    <div class="img" style="background-image:url('https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=800&q=80')"></div>
-                    <div class="product-body"><span>Cereal</span><h3>Trigo</h3><p>El cereal del invierno paraguayo.</p></div>
-                </div>
-                <div class="product-card">
-                    <div class="img" style="background-image:url('https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=800&q=80')"></div>
-                    <div class="product-body"><span>Cárnico</span><h3>Carne Bovina</h3><p>De las pasturas al frigorífico.</p></div>
-                </div>
-                <div class="product-card">
-                    <div class="img" style="background-image:url('https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80')"></div>
-                    <div class="product-body"><span>Cereal</span><h3>Arroz</h3><p>Grano seleccionado del interior.</p></div>
-                </div>
-                <div class="product-card">
-                    <div class="img" style="background-image:url('https://images.unsplash.com/photo-1590779033100-9f60a05a013d?auto=format&fit=crop&w=800&q=80')"></div>
-                    <div class="product-body"><span>Oleaginoso</span><h3>Sésamo</h3><p>Pequeño en grano, grande en valor.</p></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- HOW WE WORK -->
-    <section class="section export" id="exportacion">
-        <div class="container">
-            <div class="heading-center">
-                <p class="eyebrow eyebrow-light">Cómo trabajamos</p>
-                <h2>De la finca al puerto.</h2>
-                <p>Nos ocupamos de todo lo que pasa entre el productor y el comprador.</p>
-            </div>
-            <div class="steps">
-                <div class="step"><div class="step-num">01</div><h4>En el campo</h4><p>Compramos directo a quienes producen.</p></div>
-                <div class="step"><div class="step-num">02</div><h4>Revisamos</h4><p>Miramos humedad, pureza y sanidad.</p></div>
-                <div class="step"><div class="step-num">03</div><h4>Papeles en orden</h4><p>Certificados y permisos al día.</p></div>
-                <div class="step"><div class="step-num">04</div><h4>Camino al puerto</h4><p>Camiones, contenedores y carga coordinada.</p></div>
-                <div class="step"><div class="step-num">05</div><h4>Cruzamos el mar</h4><p>Seguimiento hasta la entrega.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MARKETS -->
-    <section class="section markets">
-        <div class="container">
-            <div class="section-head">
-                <div>
-                    <p class="eyebrow">Alcance</p>
-                    <h2>Nuestros productos<br>llegan lejos.</h2>
-                </div>
-                <p class="lead">Del corazón del Paraguay a compradores de distintos continentes.</p>
-            </div>
-            <div class="markets-grid">
-                <div>
-                    <div class="market-region"><h4>América</h4><p>Vecinos de la región y mercados del norte.</p></div>
-                    <div class="market-region"><h4>Europa</h4><p>Destinos con exigentes estándares de calidad.</p></div>
-                    <div class="market-region"><h4>Asia</h4><p>Mercados en crecimiento para nuestros granos.</p></div>
-                    <div class="market-region"><h4>Medio Oriente</h4><p>Nuevas rutas para la producción paraguaya.</p></div>
-                </div>
-                <div>
-                    <p class="eyebrow">Destinos</p>
-                    <div class="chips">
-                        <span class="chip">Brasil</span><span class="chip">Chile</span><span class="chip">México</span>
-                        <span class="chip">España</span><span class="chip">Países Bajos</span><span class="chip">Alemania</span>
-                        <span class="chip">China</span><span class="chip">Japón</span><span class="chip">Vietnam</span>
-                        <span class="chip">Emiratos Árabes</span><span class="chip">Turquía</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- QUALITY -->
-    <section class="section quality" id="calidad">
-        <div class="container">
-            <p class="eyebrow">Calidad</p>
-            <h2>Hacemos las cosas<br>bien desde el origen.</h2>
-            <p>El cuidado empieza en la finca y nos acompaña hasta la entrega.</p>
-            <div class="quality-grid">
-                <div class="quality-card"><h4>Control de calidad</h4><p>Revisamos cada partida con análisis e inspecciones.</p></div>
-                <div class="quality-card"><h4>Sourcing responsable</h4><p>Trabajamos con productores comprometidos.</p></div>
-                <div class="quality-card"><h4>Trazabilidad</h4><p>Sabemos de dónde sale cada carga.</p></div>
-                <div class="quality-card"><h4>Seguridad alimentaria</h4><p>Cumplimos los requisitos de cada destino.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta-band">
-        <div class="container">
-            <p class="eyebrow eyebrow-light">NDC Agri</p>
-            <h2>El agro paraguayo, en el mundo.</h2>
-            <p>Calidad, compromiso y seriedad en cada carga.</p>
+    <div class="content">
+        <div class="inner">
+            <div class="status"><span class="dot"></span> Sitio en mantenimiento</div>
+            <h1>Estamos mejorando<br><em>nuestro sitio.</em></h1>
+            <p class="desc">Volveremos muy pronto con novedades. Gracias por tu paciencia mientras preparamos esta nueva versión de NDC Agri.</p>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <div class="progress-label"><span>Trabajando...</span><span>Pronto</span></div>
             <span class="site">ndcagri.com</span>
         </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-inner">
-                <div class="brand">
-                    <div class="brand-mark">NDC</div>
-                    <div class="brand-text"><strong>NDC AGRI</strong><span>Paraguay</span></div>
-                </div>
-                <nav class="footer-nav">
-                    <a href="#inicio">Inicio</a>
-                    <a href="#nosotros">Nosotros</a>
-                    <a href="#productos">Productos</a>
-                    <a href="#exportacion">Cómo trabajamos</a>
-                    <a href="#calidad">Calidad</a>
-                </nav>
-            </div>
-            <div class="footer-bottom">© 2026 NDC Agri. Todos los derechos reservados.</div>
-        </div>
-    </footer>
+    </div>
 
 </body>
 </html>
